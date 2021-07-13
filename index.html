@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Random Box Animation | AnimeJS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2><span>Be Amazed Everyday with</span><br>Anime JS</h2>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        for(var i=0;i<=100;i++) {
+            const blocks = document.createElement('div');
+            blocks.classList.add('block');
+            container.appendChild(blocks);
+        }
+
+        function animatedBlocks() {
+            anime({
+                targets: '.block',
+                background: function() {
+                    // return `hsl(${anime.random(180,280)}, 65%, 58%)`
+
+                    return `hsl(${anime.random(50,335)}, 65%, 58%)`
+
+                },
+                boxShadow: "10px 10px 50px rgba(0,0,0,0.1)",
+                translateX: function() {
+                    return anime.random(-700,700)
+                },
+                translateY: function() {
+                    return anime.random(-500,500)
+                },
+                scale: function() {
+                    return anime.random(1,5)
+                },
+                easing: 'easeInOutExpo',
+                duration: 3000,
+                delay: anime.stagger(10),
+                complete: animatedBlocks
+            })
+        }
+        animatedBlocks()
+    </script>
+</body>
+</html>
